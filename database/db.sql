@@ -1,13 +1,13 @@
 --Creando la Base de Datos - Registro de Usuarios
 
-CREATE DATABASE registrodeusuarios;
+CREATE DATABASE employees;
 
 --Utilizando la base de Datos
-USE registrodeusuarios;
+USE employees;
 
 --CRACIÓN DE TABLAS 
 create table  employeesss (
-    id int  NOT NULL IDENTITY primary key,
+    id int NOT NULL IDENTITY primary key,
     first_surname varchar(25) not null,
     second_surname varchar(25) not null,
     first_name varchar(20) not null,
@@ -20,3 +20,5 @@ create table  employeesss (
     area varchar(15) not null,
     condition varchar(15) not null,
 );
+
+-- MOSTRAR TODAS LAS TABLAS
