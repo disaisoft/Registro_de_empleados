@@ -3,8 +3,11 @@ const path = require('path');
 const morgan = require('morgan');
 const mysql = require('mysql');
 const MyConnection = require('express-myconnection');
+
 const app = express();
 
+//importing routes
+const employeesRoutes = require('./routes/employees');
 
 //settings 
 app.set('port', process.env.PORT || 3000);
@@ -22,8 +25,14 @@ app.use(MyConnection(mysql, {
 }, 'single'));
 
 //routes
+app.use('/', employeesRoutes);
 
 
+//statics Files
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+//Starting the server
 app.listen(app.get('port'), () => {
     console.log('Servidor Funcionando En El Puerto 3000');
 });

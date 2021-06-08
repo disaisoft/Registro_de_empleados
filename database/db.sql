@@ -6,7 +6,7 @@ CREATE DATABASE employees;
 USE employees;
 
 --CRACIÓN DE TABLAS 
-create table  employeesss (
+create table  employees (
     id int NOT NULL IDENTITY primary key,
     first_surname varchar(25) not null,
     second_surname varchar(25) not null,
