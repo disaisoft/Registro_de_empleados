@@ -1,7 +1,6 @@
 
 <%- include ('partials/_header')  %>
 
-
 <div class="container">
     <div class="row mt-5">
         <div class="col-md-7">
@@ -15,7 +14,7 @@
                         <th>otros nombres</th>
                         <th>pais de empleo</th>
                         <th>identificación</th>
-                        <th># indentificación</th>
+                        <th>#indentificación</th>
                         <th>correo</th>
                         <th>fecha de ingreso</th>
                         <th>area</th>
@@ -24,6 +23,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% if (data) { %>
+                        <% for (var i = 0; i < data.length; i++) { %>
+                            <tr>
+                                <td><%= i + 1 %></td>
+                            </tr>
+                      <%  } %>
+                   <% } %>
 
                 </tbody>
             </table>
