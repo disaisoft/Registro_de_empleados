@@ -1,5 +1,6 @@
 const controller = {};
 
+//Funcion para listar todos los datos del formulario de la bd.
 controller.list = (req, res) => {
     req.getConnection((err, conn) => {
         conn.query('SELECT * FROM employees', (err, employees) => {
@@ -31,6 +32,17 @@ controller.edit = (req, res) => {
             res.render('employees_edit', {
                 data: employees[0]
             });
+        });
+    });
+};
+
+//funcion extra para diferenciar la editada del formulario en la bd
+controller.update = (req, res) => {
+    const { id } = req.params;
+    const newEmployees = req.body;
+    req.getConnection((err, conn) => {
+        conn.query('UPDATE employees set ? WHERE id = ?', [newEmployees, id], (err, rows) =>{
+            res.redirect('/');
         });
     });
 };
