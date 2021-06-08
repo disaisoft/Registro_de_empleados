@@ -5,5 +5,7 @@ const employeesController = require('../controllers/employeesController');
 
 
 router.get('/', employeesController.list);
+router.post('/add', employeesController.save);
+
 
 module.exports = router;

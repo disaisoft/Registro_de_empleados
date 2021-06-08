@@ -12,4 +12,16 @@ controller.list = (req, res) => {
     });
 };
 
+//Funcion para guardar los datos del formulario
+controller.save = (req, res) => {
+    const data = req.body;
+
+    req.getConnection((err, conn) => {
+        conn.query('INSERT INTO employees set ?', [data], (err, employees) => {
+            console.log(employees);
+            res.send('funciona!')
+        })
+    })
+};
+
 module.exports = controller;
