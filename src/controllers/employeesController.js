@@ -12,15 +12,37 @@ controller.list = (req, res) => {
     });
 };
 
-//Funcion para guardar los datos del formulario
+//Funcion para guardar los datos del formulario en la bd
 controller.save = (req, res) => {
     const data = req.body;
 
     req.getConnection((err, conn) => {
         conn.query('INSERT INTO employees set ?', [data], (err, employees) => {
-            console.log(employees);
-            res.send('funciona!')
-        })
+            res.redirect('/');
+        });
+    })
+};
+
+//Funcion para editar los datos del formulario en la bd
+controller.edit = (req, res) => {
+    const { id } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM employees WHERE id = ?', [id], (err, employees) => {
+            res.render('employees_edit', {
+                data: employees[0]
+            });
+        });
+    });
+};
+
+
+//Funcion para eliminar los datos del formulario en la bd
+controller.delete = (req, res) => {
+    const { id } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query('DELETE FROM employees WHERE id = ?', [id], (err, rows) => {
+            res.redirect('/');
+        });
     })
 };
 
